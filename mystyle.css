@@ -2,10 +2,6 @@ circle:hover {
   opacity: 0.5;
 }
 
-circle.twentyf {
-    
-}
-
 @media screen and (max-width: 400px)
 {
     .topnav a{
