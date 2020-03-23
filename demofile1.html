@@ -5,13 +5,8 @@
 </head>
 <body>
 <h1>Pizza Surface Area Maximizer Tool</h1>
-<!--<label for="cars">How many pizzas do you want to compare?</label>
-
-<select id="pizzaNumber">
-  <option value="volvo">1</option>
-  <option value="saab">2</option>
-  <option value="mercedes">3</option>
-</select>-->
+<p>What is your pizza size?</p>
+<input id='price' type="number"></input>
 <p>Hover over the black circle and select either a 24", 18", or 12" size pizza.</p>
 
 <svg viewBox="0 0 10 10" width="30%">
@@ -27,7 +22,6 @@
 <table id="myTable" style="width:100%">
     <tr>
       <th>Pizza Size</th>
-      <th>Pizza Quantity<th>
       <th>Price (US $)</th>
       <th>Unit Cost</th>
     </tr>
@@ -37,19 +31,20 @@
 
 <script>
     function addToTable(x){
+        var price = document.getElementById('price').value;
     var table = document.getElementById("myTable");
     var row = table.insertRow(1);
     // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
     var cell3 = row.insertCell(2);
-    var cell4 = row.insertCell(3);
 
     // Add some text to the new cells:
-    cell1.innerHTML = x;
-    cell2.innerHTML = "<select id='pizzaNumber'><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option></select>";
-    cell3.innerHTML = "<input type='text'></input>";
-    cell4.innerHTML = "NEW CELL4";
+    cell1.innerHTML = x + "\"";
+    cell2.innerHTML = "$ " + price;
+    cell3.innerHTML = 3.14 * Math.pow(x/2, 2) / price;
+    
+    //3.14 * Math.pow(x/2, 2)
     }
 </script>
 </html>
