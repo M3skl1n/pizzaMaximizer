@@ -5,35 +5,13 @@
                 Pizza Surface Area Maximizer Tool
             </title>
             <link rel="stylesheet" type="text/css" href="mystyle.css">
-                <!--<style>
-                
-                    circle:hover {
-                      opacity: 0.5;
-                    }
-                
-                    table, th, td{
-
-                        padding: 15px;
-                        border: 1px solid black;
-                        border-collapse: collapse;
-                    }
-                
-                </style>-->
         </head>
         <body>
-    
-    <!--
-    add:
-    
-    -clear button
-    -required zeros on price
-    -fix unit cost calculation and display
-    
-    -->
-        <div>
+        <div class="flex-container">
             <h1>Pizza Surface Area Maximizer Tool</h1>
             <p>What does your pizza cost?</p>
             <input id='price' type="number">
+            <p id="warning"></p>
             <p>Hover over the black circle and select either a 24", 18", or 12" diameter pizza.</p>
             <svg viewBox="0 0 10 10" width="30%">
     
@@ -56,24 +34,43 @@
             <footer>
                 <button type="button" onclick="location.reload()">Clear Page</button>
             </footer>
-
+</div>
             <script>
-                    function addToTable(x){
-                        var radius = x/2;
-                        var price = document.getElementById('price').value;
-                        //var p = price.toFixed(2);
-                        var table = document.getElementById("myTable");
-                        var row = table.insertRow(1);
-                        // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
-                        var cell1 = row.insertCell(0);
-                        var cell2 = row.insertCell(1);
-                        var cell3 = row.insertCell(2);
+                
+                function errorHandling(x){
+                    if (x == true){
+                    document.getElementById("warning").innerHTML = "Price cannot be negative or zero.";
+                    }
+                    else {
+                        document.getElementById("warning").innerHTML = "";
+                    }
+                }
+                
+                function addToTable(x){
 
+                    var radius = x/2;
+                    var price = document.getElementById('price').value;
+                    var p = parseFloat(price).toFixed(2);
+                    var unitCost = parseFloat(price / (3.14 * Math.pow(radius, 2))).toFixed(2);
+                    
+                    if (price < 0 || price == 0 ){
+                        errorHandling(true);
+                    }
+                        
+                    else {
+                        errorHandling(false);
+                    //var p = price.toFixed(2);
+                    var table = document.getElementById("myTable");
+                    var row = table.insertRow(1);
+                    // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
+                    var cell1 = row.insertCell(0);
+                    var cell2 = row.insertCell(1);
+                    var cell3 = row.insertCell(2);
                         // Add some text to the new cells:
-                        cell1.innerHTML = x + "\"";
-                        cell2.innerHTML = "$ " + price;
-                        cell3.innerHTML = "$ " + price / (3.14 * Math.pow(radius, 2))  + " dollar(s) per square inch";
-                    //3.14 * Math.pow(x/2, 2)
+                    cell1.innerHTML = x + "\"";
+                    cell2.innerHTML = "$ " + p;
+                    cell3.innerHTML = "$ " + unitCost + " dollar(s) per square inch";
+                    }
                 }
         </script>
     </body>

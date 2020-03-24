@@ -1,3 +1,7 @@
+#warning {
+     color: red;
+}
+
 circle:hover {
       opacity: 0.5;
     }
@@ -9,21 +13,17 @@ circle:hover {
         border-collapse: collapse;
     }
 
-@media screen and (max-width: 400px)
-{
-    .topnav a{
-        float: none;
-        width: 100%;
-    }
-}
-@media screen and (max-width: 800px) {
-    .column.side, .column.middle, .column {
-        width:100%;
-    }
+div.flex-container {
+          width: 65%;
+          border: solid 15px;
+
+          border-color: grey;
+          padding: 50px;
+          margin: auto;
+          display: flex;
+          flex-direction: column;
 }
 
-@media only screen and (max-width: 600px) {
-  div.example {
-    font-size: 30px;
-  }
+body{
+    background: #CAD5E3;
 }
