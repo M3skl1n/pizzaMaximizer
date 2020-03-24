@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang = "en">
 <head>
+    <title>
+        Pizza Surface Area Maximizer Tool
+        </title>
 <link rel="stylesheet" type="text/css" href="mystyle.css">
 </head>
 <body>
@@ -15,7 +18,7 @@
     -->
 <h1>Pizza Surface Area Maximizer Tool</h1>
 <p>What does your pizza cost?</p>
-<input id='price' type="number"></input>
+<input id='price' type="number">
 <p>Hover over the black circle and select either a 24", 18", or 12" diameter pizza.</p>
 
 <svg viewBox="0 0 10 10" width="30%">
@@ -40,9 +43,6 @@
 <button type="button" onclick="location.reload()">Clear Page</button>
 </footer>
 
-
-</body>
-
 <script>
     function addToTable(x){
         var radius = x/2;
@@ -58,11 +58,13 @@
     // Add some text to the new cells:
     cell1.innerHTML = x + "\"";
     cell2.innerHTML = "$ " + price;
-    cell3.innerHTML = "$ " + price / 3.14 * Math.pow(radius, 2)  + " dollar(s) per square inch";
+    cell3.innerHTML = "$ " + price / (3.14 * Math.pow(radius, 2))  + " dollar(s) per square inch";
     
     //3.14 * Math.pow(x/2, 2)
     }
 </script>
+</body>
+
 </html>
 
 
